@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BusTracker - Real-time Bus Tracking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+      <div class="container">
+          <div class="header-content">
+              <div class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/>
+                            <circle cx="7.5" cy="16.5" r="1.5"/>
+                            <circle cx="16.5" cy="16.5" r="1.5"/>
+                        </svg>
+                    </div>
+                    <h1>BusTracker</h1>
+                </div>
+                <nav class="nav" id="nav">
+                    <a href="#home">Home</a>
+                    <a href="#routes">Routes</a>
+                    <a href="#schedule">Schedule</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section" id="home">
+        <div class="container">
+            <h2 class="search-title slide-in">Track Your Bus in Real-Time</h2>
+            <div class="search-card slide-in">
+                <form class="search-form" id="searchForm">
+                    <div class="form-group">
+                        <label for="from">From</label>
+                        <select id="from">
+                            <option value="">Select departure</option>
+                            <option value="city-center">City Center</option>
+                            <option value="airport">Airport</option>
+                            <option value="university">University</option>
+                            <option value="mall">Mall Plaza</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="to">To</label>
+                        <select id="to">
+                            <option value="">Select destination</option>
+                            <option value="downtown">Downtown</option>
+                            <option value="residential">Residential Area</option>
+                            <option value="business">Business District</option>
+                            <option value="shopping">Shopping Center</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="search-btn">Track Bus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h3 class="section-title">Live Bus Locations</h3>
+            <div class="map-container">
+                <!-- Route Line -->
+                <div class="route-line"></div>
+                
+                <!-- Bus Stops -->
+                <div class="bus-stop" style="left: 15%;"></div>
+                <div class="bus-stop" style="left: 35%;"></div>
+                <div class="bus-stop" style="left: 55%;"></div>
+                <div class="bus-stop" style="left: 75%;"></div>
+                
+                <!-- Moving Bus -->
+                <div class="bus-icon">
+                    <div class="bus-marker">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/>
+                            <circle cx="7.5" cy="16.5" r="1.5"/>
+                            <circle cx="16.5" cy="16.5" r="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Map Labels -->
+                <div class="map-label map-label-top">
+                    <h4 style="margin: 0; font-weight: 600; color: #1f2937;">Route 101</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6b7280;">City Center → Airport</p>
+                </div>
+                
+                <div class="map-label map-label-bottom">
+                    <div class="live-indicator">
+                        <div class="live-dot"></div>
+                        <span style="font-size: 14px; font-weight: 500; color: #1f2937;">Live Tracking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bus Information Cards -->
+    <section id="routes">
+        <div class="container">
+            <h3 class="section-title">Available Buses</h3>
+            <div class="bus-cards">
+                <!-- Government Bus -->
+                <div class="bus-card">
+                    <div class="bus-header">
+                        <div class="bus-info">
+                            <div class="bus-icon-container government">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/>
+                                </svg>
+                            </div>
+                            <div class="bus-details">
+                                <h4>Route 101</h4>
+                                <p>Government Bus</p>
+                            </div>
+                        </div>
+                        <span class="status-badge status-ontime">On Time</span>
+                    </div>
+                    <div class="bus-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Next Stop:</span>
+                            <span class="stat-value">University Gate</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">ETA:</span>
+                            <span class="stat-value eta" data-eta="3">3 min</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Capacity:</span>
+                            <span class="stat-value">32/45 seats</span>
+                        </div>
+                    </div>
+                    <button class="track-btn" onclick="trackBus('Route 101')">Track This Bus</button>
+                </div>
+
+                <!-- Private Company Bus -->
+                <div class="bus-card">
+                    <div class="bus-header">
+                        <div class="bus-info">
+                            <div class="bus-icon-container private">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/>
+                                </svg>
+                            </div>
+                            <div class="bus-details">
+                                <h4>Express 205</h4>
+                                <p>Metro Express</p>
+                            </div>
+                        </div>
+                        <span class="status-badge status-delayed">Delayed</span>
+                    </div>
+                    <div class="bus-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Next Stop:</span>
+                            <span class="stat-value">Business District</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">ETA:</span>
+                            <span class="stat-value eta delayed" data-eta="8">8 min</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Capacity:</span>
+                            <span class="stat-value">28/40 seats</span>
+                        </div>
+                    </div>
+                    <button class="track-btn" onclick="trackBus('Express 205')">Track This Bus</button>
+                </div>
+
+                <!-- Another Government Bus -->
+                <div class="bus-card">
+                    <div class="bus-header">
+                        <div class="bus-info">
+                            <div class="bus-icon-container government">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/>
+                                </svg>
+                            </div>
+                            <div class="bus-details">
+                                <h4>Route 303</h4>
+                                <p>City Transport</p>
+                            </div>
+                        </div>
+                        <span class="status-badge status-ontime">On Time</span>
+                    </div>
+                    <div class="bus-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Next Stop:</span>
+                            <span class="stat-value">Shopping Mall</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">ETA:</span>
+                            <span class="stat-value eta" data-eta="12">12 min</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Capacity:</span>
+                            <span class="stat-value">15/50 seats</span>
+                        </div>
+                    </div>
+                    <button class="track-btn" onclick="trackBus('Route 303')">Track This Bus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section" id="schedule">
+        <div class="container">
+            <h3 class="section-title">Today's Schedule</h3>
+            <div class="schedule-table">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Route</th>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="route-info">
+                                        <h5>Route 101</h5>
+                                        <p>City Center → Airport</p>
+                                    </div>
+                                </td>
+                                <td>08:30 AM</td>
+                                <td>09:15 AM</td>
+                                <td><span class="status-badge status-ontime">On Time</span></td>
+                                <td><a href="#" class="track-link" onclick="trackBus('Route 101')">Track</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="route-info">
+                                        <h5>Express 205</h5>
+                                        <p>Downtown → University</p>
+                                    </div>
+                                </td>
+                                <td>09:00 AM</td>
+                                <td>09:35 AM</td>
+                                <td><span class="status-badge status-delayed">Delayed</span></td>
+                                <td><a href="#" class="track-link" onclick="trackBus('Express 205')">Track</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="route-info">
+                                        <h5>Route 303</h5>
+                                        <p>Mall → Residential</p>
+                                    </div>
+                                </td>
+                                <td>09:30 AM</td>
+                                <td>10:10 AM</td>
+                                <td><span class="status-badge status-ontime">On Time</span></td>
+                                <td><a href="#" class="track-link" onclick="trackBus('Route 303')">Track</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/>
+                            </svg>
+                        </div>
+                        <h3>BusTracker</h3>
+                    </div>
+                    <p style="color: #9ca3af; margin-top: 16px;">Real-time bus tracking for government and private transportation services.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Live Tracking</a></li>
+                        <li><a href="#routes">Route Maps</a></li>
+                        <li><a href="#schedule">Schedules</a></li>
+                        <li><a href="#contact">Fare Information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#contact">Report Issue</a></li>
+                        <li><a href="#contact">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Download App</h4>
+                    <div class="app-download">
+                        <a href="#" class="download-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                            </svg>
+                            <div class="download-info">
+                                <div class="small">Download on the</div>
+                                <div class="large">App Store</div>
+                            </div>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                            </svg>
+                            <div class="download-info">
+                                <div class="small">Get it on</div>
+                                <div class="large">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BusTracker. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
