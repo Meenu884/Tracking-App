@@ -21,7 +21,8 @@ tracking-app/
 │── README.md
 
 ## 📸 Preview
-(Add your project screenshot here)
+(Add your project screenshot here)<img width="1855" height="904" alt="Screenshot 2026-04-16 155458" src="https://github.com/user-attachments/assets/7fc53b4f-13c0-4ab9-a264-72f670f6dbc1" />
+
 
 ## 🔧 How to Run
 1. Download or clone the repository
