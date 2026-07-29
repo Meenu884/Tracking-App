@@ -1,4 +1,4 @@
-# 📍 Tracking App
+# 📍Bus Tracking App
 
 A simple and responsive tracking web application built using HTML, CSS, and JavaScript.
 
