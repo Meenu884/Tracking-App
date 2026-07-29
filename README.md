@@ -14,7 +14,7 @@ A simple and responsive tracking web application built using HTML, CSS, and Java
 - JavaScript
 
 ## 📂 Project Structure
-tracking-app/
+bus-tracking-app/
 │── index.html
 │── style.css
 │── script.js
